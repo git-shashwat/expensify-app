@@ -9,12 +9,10 @@ const AddExpensePage = (props) => (
         <ExpenseForm 
             onSubmit={(expense) => {
                 props.dispatch(startAddExpense(expense));
-                props.history.push('/');
+                props.history.push('/dashboard');
             }}
         />
     </div>
 );
 
 export default connect()(AddExpensePage);
-
-// Awesome blossom with extra awesome please h
