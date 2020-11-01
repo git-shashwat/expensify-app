@@ -16,12 +16,14 @@ module.exports = (env) => {
     entry: './src/app.js',
     output: {
       path: path.join(__dirname, 'public', 'dist'),
-      filename: 'bundle.js'
+      filename: 'bundle.js',
+      chunkFilename: '[name].chunk.js',
+      publicPath: '/dist/'
     },
     module: {
       rules: [{
         loader: 'babel-loader',
-        test: /\.js$/,
+        test: /\.jsx?$/,
         exclude: /node_modules/
       }, {
         test: /\.s?css$/,
