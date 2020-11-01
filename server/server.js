@@ -1,11 +1,13 @@
 const path = require('path');
 const express = require('express');
+const compression = require('compression');
 
 const port = process.env.PORT || 8000;
 const publicDirPath = path.join(__dirname, '../public');
 
 const app = express();
 app.use(express.static(publicDirPath));
+app.use(compression());
 
 app.get('*', (req, res) => {
     res.sendFile(path.join(publicDirPath, 'index.html'));
