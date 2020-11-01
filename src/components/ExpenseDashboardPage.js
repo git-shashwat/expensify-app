@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Profiler } from 'react';
 import ExpenseList from './ExpenseList';
 import ExpenseListFilters from './ExpenseListFilters';
 import ExpensesSummary from './ExpensesSummary'
@@ -8,7 +8,15 @@ const ExpenseDashboardPage = () => {
         <div>
             <ExpensesSummary />
             <ExpenseListFilters />
-            <ExpenseList />
+            <Profiler id="expenseListProfiler" onRender={(id, phase, actualDuration) => {
+                console.log({
+                    id,
+                    phase,
+                    actualDuration
+                });
+            }}>
+                <ExpenseList />
+            </Profiler>
         </div>
     );
 };
